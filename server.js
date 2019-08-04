@@ -9,7 +9,7 @@ var Note = require("./models/Note.js");
 var Article = require("./models/Article.js");
 
 // Our scraping tools
-var request = require("request-promise");
+var request = require("request");
 var cheerio = require("cheerio");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
@@ -43,7 +43,6 @@ app.use("/", routes);
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 mongoose.connect(MONGODB_URI);
-
 
 var db = mongoose.connection;
 
