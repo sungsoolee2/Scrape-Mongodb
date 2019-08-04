@@ -1,15 +1,32 @@
 {
-    "name": "mongodb-news-scraper",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "dependencies": {
-        "body-parser": "^1.18.2",
-        "cheerio": "^1.0.0-rc.2",
-        "express": "^4.16.3",
-        "express-handlebars": "^3.0.0",
-        "mongoose": "^5.0.10",
-        "morgan": "^1.9.0",
-        "request": "^2.85.0"
-    }
+  "name": "mongodb-news-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "mongoose": "^5.6.8",
+    "morgan": "^1.9.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sungsoolee2/Scrape-Mongodb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sungsoolee2/Scrape-Mongodb/issues"
+  },
+  "homepage": "https://github.com/sungsoolee2/Scrape-Mongodb#readme"
 }
