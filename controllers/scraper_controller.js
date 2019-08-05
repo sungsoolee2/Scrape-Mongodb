@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require("request-promise");
 var cheerio = require("cheerio");
 var mongoose = require("mongoose");
-var axios =require('axios');
+
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
@@ -50,7 +50,7 @@ router.post("/scrape", function (req, res) {
             // Add the text and href of every link, and save them as properties of the result object
             result.title = $(this).children("a").text();
 
-            console.log(result.title);
+            // console.log(result.title);
 
             result.link = $(this).children("a").attr("href");
             scrapedArticles[i] = result;
@@ -68,7 +68,7 @@ router.post("/scrape", function (req, res) {
 });
 
 router.post("/save", function (req, res) {
-    console.log("Saving: " + req.body.title);
+    // console.log("Saving: " + req.body.title);
     var newArticleObject = {};
 
     newArticleObject.title = req.body.title;
@@ -76,7 +76,7 @@ router.post("/save", function (req, res) {
 
     var entry = new Article(newArticleObject);
 
-    console.log("Saved: " + entry);
+    // console.log("Saved: " + entry);
 
     // Now, save that entry to the db
     entry.save(function (err, doc) {
@@ -94,8 +94,8 @@ router.post("/save", function (req, res) {
 
 // Get article that matches Id to delete
 router.get("/delete/:id", function (req, res) {
-    console.log("ID is getting read for delete" + req.params.id);
-    console.log("Able to activate delete function.");
+   
+    // console.log("Able to activate delete function.");
 
     Article.findOneAndRemove({ "_id": req.params.id }, function (err, offer) {
         if (err) {
@@ -109,8 +109,8 @@ router.get("/delete/:id", function (req, res) {
 
 //Get notes that matches Id to delete
 router.get("/notes/:id", function (req, res) {
-    console.log("ID is getting read for delete" + req.params.id);
-    console.log("Able to activate delete function.");
+    
+    // console.log("Able to activate delete function.");
 
     Note.findOneAndRemove({ "_id": req.params.id }, function (err, doc) {
         if (err) {
@@ -124,7 +124,7 @@ router.get("/notes/:id", function (req, res) {
 
 //Get an article by it's Id
 router.get("/articles/:id", function (req, res) {
-    console.log("ID is getting read" + req.params.id);
+    // console.log("ID is getting read" + req.params.id);
 
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     Article.findOne({ "_id": req.params.id })

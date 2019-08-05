@@ -20,8 +20,9 @@ html {
     overflow: hidden;
       background-size: 50%;
       background-position: center;
-      background-image: url('../images/BuckyBadger.jpg');
+      background-image: url('../images/dailycardinal.png');
       background-repeat: no-repeat;
+      background-color: red;
       height: 100px;
       width: 100%;
   }
