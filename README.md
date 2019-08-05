@@ -6,7 +6,7 @@ This app is a web scraping tool that takes The Daily Cardnial newspaper, the off
 
 ## Screen Shots
 Scraped Articles
-![Screen shot](.public\assets\images\2019-08-05.png)
+![Screen shot](../images/2019-08-05.png)
 
 ## Technologies used
 - [Node.js](https://en.wikipedia.org/wiki/Node.js)
