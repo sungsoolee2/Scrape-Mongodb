@@ -4,13 +4,14 @@ This app is a web scraping tool that takes The Daily Cardnial newspaper, the off
 
 [Deployed Github Link :](LINK)
 [Heroku Link :](LINK)
+
 ## Screen Shots
 Scraped Articles
-![Screen shot](./public/assets/images/readme/2019-08-05.png)
+![Screen shot](.\public\assets\images\2019-08-05.png)
 
 ## Technologies used
 - [Node.js](https://en.wikipedia.org/wiki/Node.js)
-- [MongoDb](https://en.wikipedia.org/wiki/MySQL)
+- [MongoDb](https://en.wikipedia.org/wiki/MongoDB)
 - [Express.js Framework](https://expressjs.com/)
 - [MVC -architecture](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 - [NPM packages](https://www.npmjs.com/)
