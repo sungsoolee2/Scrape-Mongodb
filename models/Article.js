@@ -17,6 +17,18 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  synop: {
+    type: String,
+    required: true
+  },
+  datetime: {
+    type: String,
+    required: true
+  },
+  href: {
+    type: String,
+    required: true
+  },
   // Saves array of notes.
   notes: [{
     type: Schema.Types.ObjectId,

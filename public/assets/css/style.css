@@ -20,10 +20,10 @@ html {
     overflow: hidden;
       background-size: 50%;
       background-position: center;
-      background-image: url('../images/dailycardinal.png');
+      background-image: url('../images/coindesk1.png');
       background-repeat: no-repeat;
-      background-color: red;
-      height: 100px;
+      background-color: black;
+      height: 200px;
       width: 100%;
   }
   
@@ -33,7 +33,7 @@ html {
   }
   
   .panel-primary {
-      height: 135px;
+      height: auto;
   }
   
   #savenote {

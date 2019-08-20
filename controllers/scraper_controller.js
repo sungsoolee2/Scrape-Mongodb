@@ -35,7 +35,7 @@ router.get("/articles", function (req, res) {
 router.post("/scrape", function (req, res) {
 
     // First, we grab the body of the html with request
-    request("https://www.dailycardinal.com/", function (error, response, html) {
+    request("https://www.coindesk.com/", function (error, response, html) {
     
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(html);
@@ -43,19 +43,26 @@ router.post("/scrape", function (req, res) {
         // Make emptry array for temporarily saving and showing scraped Articles.
         var scrapedArticles = {};
         // Now, we grab every h2 within an article tag, and do the following:
-        $("article h3").each(function (i, element) {
+        $(".stream-article").each(function (i, element) {
             // Save an empty result object
             var result = {};
 
-            // Add the text and href of every link, and save them as properties of the result object
-            result.title = $(this).children("a").text();
+            result.title =$(this).find(".meta").find("h3").text();
+            console.log($(this).find(".meta").find("h3").text());
 
-            // console.log(result.title);
+            result.link=$(this).find(".image").find("img").attr("src");
+            console.log($(this).find(".image").find("img").attr("src"));
 
-            result.link = $(this).children("a").attr("href");
+            result.datetime=$(this).find(".time").find("time").attr("datetime");
+            console.log($(this).find(".time").find("time").attr("datetime"));
+
+            result.synop=$(this).find(".meta").find("p").text();
+            console.log($(this).find(".meta").find("p").text());
+            
+            result.href=$(this).attr("href");
+            console.log("look at this stuff "+$(this).attr("href"));
             scrapedArticles[i] = result;
-        });
-
+        });   
         console.log("Scraped Articles: " + scrapedArticles);
 
         var hbsArticleObject = {
@@ -73,10 +80,13 @@ router.post("/save", function (req, res) {
 
     newArticleObject.title = req.body.title;
     newArticleObject.link = req.body.link;
+    newArticleObject.synop= req.body.synop;
+    newArticleObject.datetime= req.body.datetime;
+    newArticleObject.href= req.body.href;
 
     var entry = new Article(newArticleObject);
 
-    // console.log("Saved: " + entry);
+    console.log("Saved: " + entry);
 
     // Now, save that entry to the db
     entry.save(function (err, doc) {

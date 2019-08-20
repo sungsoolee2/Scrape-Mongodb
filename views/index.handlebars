@@ -44,8 +44,11 @@
                     </div>
                     <div class="col-xs-3">
                         <form action="/save" method="POST">
-                            <input id="article-title" type="hidden" name="title" value="{{this.title}}">
-                            <input id="article-link" type="hidden" name="link" value={{this.link}}>
+                            <input id="article-title" type="hidden" name="title" value={{this.title}}>
+                            <input id="article-link" type="hidden" name="link" value="{{this.link}}">
+                            <input id="article-synop" type="hidden" name="link" value={{this.synop}}>
+                            <input id="article-href" type="hidden" name="link" value="{{this.href}}">
+
                             <button type="submit" class="btn btn-default pull-right">SAVE ARTICLE</button>
                         </form>
                     </div>
@@ -53,7 +56,9 @@
                 <div class="row">
                     <div class="col-xs-12>">
                         <div class="panel-body">
-                            <p>{{this.link}}</p>
+                            <img class="pic" src="{{this.link}}"></img>
+                            <p1>{{this.synop}}</p1>
+                            <a href="{{this.href}}">{{this.href}}</a>
                         </div>
                     </div>
                 </div>
