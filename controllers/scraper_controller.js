@@ -34,38 +34,46 @@ router.get("/articles", function (req, res) {
 // A GET request to scrape 
 router.post("/scrape", function (req, res) {
 
-    // First, we grab the body of the html with request
-    request("https://www.dailycardinal.com/", function (error, response, html) {
+ // First, we grab the body of the html with request
+ request("https://www.coindesk.com/", function (error, response, html) {
     
-        // Then, we load that into cheerio and save it to $ for a shorthand selector
-        var $ = cheerio.load(html);
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
 
-        // Make emptry array for temporarily saving and showing scraped Articles.
-        var scrapedArticles = {};
-        // Now, we grab every h2 within an article tag, and do the following:
-        $("article h3").each(function (i, element) {
-            // Save an empty result object
-            var result = {};
+    // Make emptry array for temporarily saving and showing scraped Articles.
+    var scrapedArticles = {};
+    // Now, we grab every h2 within an article tag, and do the following:
+    $(".stream-article").each(function (i, element) {
+        // Save an empty result object
+        var result = {};
 
-            // Add the text and href of every link, and save them as properties of the result object
-            result.title = $(this).children("a").text();
+        result.title =$(this).find(".meta").find("h3").text();
+        console.log($(this).find(".meta").find("h3").text());
 
-            // console.log(result.title);
+        // result.link=$(this).find(".image").find("img").attr("src");
+        // console.log($(this).find(".image").find("img").attr("src"));
 
-            result.link = $(this).children("a").attr("href");
-            scrapedArticles[i] = result;
-        });
+        // result.datetime=$(this).find(".time").find("time").attr("datetime");
+        // console.log($(this).find(".time").find("time").attr("datetime"));
+        result.link=$(this).attr("href");
+        console.log("look at this stuff "+$(this).attr("href"));
 
-        console.log("Scraped Articles: " + scrapedArticles);
+        result.synop=$(this).find(".meta").find("p").text();
+        console.log($(this).find(".meta").find("p").text());
+        
+        
+        scrapedArticles[i] = result;
+    });   
+    console.log("Scraped Articles: " + scrapedArticles);
 
-        var hbsArticleObject = {
-            articles: scrapedArticles
-        };
+    var hbsArticleObject = {
+        articles: scrapedArticles
+    };
 
-        res.render("index", hbsArticleObject);
+    res.render("index", hbsArticleObject);
 
-    });
 });
+});  
 
 router.post("/save", function (req, res) {
     // console.log("Saving: " + req.body.title);
@@ -73,6 +81,7 @@ router.post("/save", function (req, res) {
 
     newArticleObject.title = req.body.title;
     newArticleObject.link = req.body.link;
+    
 
     var entry = new Article(newArticleObject);
 
