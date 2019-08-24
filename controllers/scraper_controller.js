@@ -81,11 +81,13 @@ router.post("/save", function (req, res) {
 
     newArticleObject.title = req.body.title;
     newArticleObject.link = req.body.link;
-    
+    newArticleObject.synop= req.body.synop;
+    newArticleObject.datetime= req.body.datetime;
+    newArticleObject.href= req.body.href;
 
     var entry = new Article(newArticleObject);
 
-    // console.log("Saved: " + entry);
+    console.log("Saved: " + entry);
 
     // Now, save that entry to the db
     entry.save(function (err, doc) {
