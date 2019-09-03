@@ -15,6 +15,11 @@ Scrape Articles
 
 
 
+Saved Articles & Notes
+![Screen shot](public/assets/scrape2.png)
+
+
+
 ## Technologies used
 - [express-handlebars NPM](https://www.npmjs.com/package/express-handlebars)
 - [Express.js Framework](https://expressjs.com/)
