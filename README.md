@@ -13,8 +13,7 @@ The user can save articles and notes for that article to MongoDB database. The u
 Scrape Articles
 ![Screen shot](public/assets/ScrapeMongoDB.png)
 
-Saved Articles & Notes
-![Screen shot](public/assets/scrape2.png)
+
 
 ## Technologies used
 - [express-handlebars NPM](https://www.npmjs.com/package/express-handlebars)
